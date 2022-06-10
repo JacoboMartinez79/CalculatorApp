@@ -1,5 +1,7 @@
 #include "MainCalculator.h"
-
+wxBEGIN_EVENT_TABLE(MainCalculator, wxFrame)
+EVT_BUTTON(0, OnButtonClicked)
+wxEND_EVENT_TABLE()
 
 
 MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(400, 400), wxSize(417,490))
@@ -14,7 +16,7 @@ MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPo
 	m_btn= new wxButton(this, 7, "7", wxPoint(200, 350), wxSize(100, 50));
 	m_btn= new wxButton(this, 8, "8", wxPoint(200, 300), wxSize(100, 50));
 	m_btn= new wxButton(this, 9, "9", wxPoint(200, 250), wxSize(100, 50));
-	m_btn= new wxButton(this, 10, "%", wxPoint(300, 250), wxSize(100, 50));
+	m_btn= new wxButton(this, 10, "/", wxPoint(300, 250), wxSize(100, 50));
 	m_btn= new wxButton(this, 11, "-", wxPoint(300, 300), wxSize(100, 50));
 	m_btn = new wxButton(this, 12, "Decimal", wxPoint(200, 200), wxSize(100, 50));
 	m_btn = new wxButton(this, 13, "+", wxPoint(300, 350), wxSize(100, 50));
@@ -25,17 +27,68 @@ MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPo
 	m_btn= new wxButton(this, 18, "+/-", wxPoint(0, 200), wxSize(100, 50));
 	m_btn = new wxButton(this, 19, "*", wxPoint(300, 200), wxSize(100, 50));
 	m_btn = new wxButton(this, 20, "Mod", wxPoint(0, 150), wxSize(100, 50));
-	//m_list = new wxListBox(this, 20, wxPoint(200, 200), wxSize(100, 100));
 	m_txt = new wxTextCtrl(this, 21," ", wxPoint(0, 0), wxSize(400, 150));
 
-	//Bind(wxEVT_COMMAND_BUTTON_CLICKED, &MainCalculator::OnButtonClicked, this);
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &MainCalculator::OnButtonClicked, this);
 }
 
 MainCalculator::~MainCalculator()
 {
 	//delete m_btn;
 }
-/*void MainCalculator::OnButtonClicked(wxCommandEvent& evt)
+void MainCalculator::OnButtonClicked(wxCommandEvent& evt)
 {
-
-}*/
+ int num = evt.GetId();
+ wxString stringNum = "";
+ stringNum << num;
+ 
+ if(0 <= num && num <= 9)
+ {
+   m_txt->AppendText(stringNum);
+ }
+ if (num == 10)
+ {
+	 m_txt->AppendText("/");
+ }
+ if (num == 11)
+ {
+	 m_txt->AppendText("-");
+ } 
+ if (num == 12)
+ {
+    m_txt->AppendText("Decimal");
+ }
+ if (num == 13)
+ {
+	 m_txt->AppendText("+");
+ }
+ if (num == 14)
+ {
+	 m_txt->AppendText("=");
+ }
+ if (num == 15)
+ {
+	 m_txt->Clear();
+ }
+ if (num == 16)
+ {
+	 m_txt->AppendText("Binary");
+ }
+ if (num == 17)
+ {
+	 m_txt->AppendText("HexaDecimal");
+ }
+ if (num == 18)
+ {
+	 m_txt->AppendText("+/-");
+ }
+ if (num == 19)
+ {
+	 m_txt->AppendText("*");
+ }
+ if (num == 20)
+ {
+	 m_txt->AppendText("Mod");
+ }
+ 
+}
