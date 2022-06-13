@@ -21,12 +21,18 @@
     <ClInclude Include="CalculatorApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CalFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainCalculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CalculatorApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CalFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

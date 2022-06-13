@@ -144,10 +144,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CalculatorApp.h" />
+    <ClInclude Include="CalFactory.h" />
     <ClInclude Include="MainCalculator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApp.cpp" />
+    <ClCompile Include="CalFactory.cpp" />
     <ClCompile Include="MainCalculator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
