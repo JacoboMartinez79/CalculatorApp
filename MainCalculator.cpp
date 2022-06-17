@@ -11,7 +11,10 @@ MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPo
 {
 	CalFactory maker = CalFactory(this);
 
-	//buttons 0 through 9
+	/*CalFactory factory = CalFactory(this);
+	m_btn = factory.createbuttons(this, wxID_ANY, "Calculator", wxPoint(400, 400), wxSize(417, 490));*/
+	
+	//buttons 0 through 20
 	maker.m_btn0();
 	maker.m_btn1();
 	maker.m_btn2();
@@ -22,7 +25,17 @@ MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPo
 	maker.m_btn7();
 	maker.m_btn8();
 	maker.m_btn9();
-
+	maker.m_btn10();
+	maker.m_btn11();
+	maker.m_btn12();
+	maker.m_btn13();
+	maker.m_btn14();
+	maker.m_btn15();
+	maker.m_btn16();
+	maker.m_btn17();
+	maker.m_btn18();
+	maker.m_btn19();
+	maker.m_btn20();
 	m_txt = new wxTextCtrl(this, 21," ", wxPoint(0, 0), wxSize(400, 150));
 
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &MainCalculator::OnButtonClicked, this);

@@ -6,6 +6,9 @@ class CalFactory
 public:
 	MainCalculator* m_form1 = nullptr;
 	wxButton* m_btn = nullptr;
+
+	//wxButton* createbuttons(wxWindow* window, int ID, wxString letter, wxPoint point, wxSize size);
+
 	CalFactory(MainCalculator* m_form1);
 	~CalFactory();
 	wxButton* m_btn0();
