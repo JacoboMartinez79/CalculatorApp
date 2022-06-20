@@ -8,7 +8,7 @@ public:
 	~MainCalculator();
 public:
 	
-	wxButton *m_btn = nullptr;
+	wxButton* m_btn = nullptr;
 	wxTextCtrl *m_txt = nullptr;
 
 	void OnButtonClicked(wxCommandEvent& evt);

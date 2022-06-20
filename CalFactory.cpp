@@ -8,7 +8,7 @@
 }*/
 
 CalFactory::CalFactory(MainCalculator* m_form1) {
-	//form= m_form1;
+	this->m_form1 = m_form1;
 }
 CalFactory::~CalFactory() {
 

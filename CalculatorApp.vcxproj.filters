@@ -24,6 +24,12 @@
     <ClInclude Include="CalFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CalProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainCalculator.cpp">
