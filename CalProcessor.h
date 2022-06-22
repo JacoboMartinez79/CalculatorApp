@@ -15,9 +15,11 @@ public:
 		}
 		return _processor;
 	}
+
 	// need to make one object only and it isnt cloned so these arent needed.
 	CalProcessor(CalProcessor& other) = delete;
 	void operator= (const CalProcessor& other) = delete;
+
 	//Setter of the number
 	void SetBaseNum(int num)
 	{
@@ -81,7 +83,7 @@ public:
 		NumsToAlpha = "0x" + NumsToAlpha;
 		return NumsToAlpha;
 	}
-	std::string DoAddition(int _num1, int _num2)
+	/*std::string DoAddition(int _num1, int _num2)
 	{
 		std::string add = std::to_string(_num1 + _num2);
 		return add;
@@ -100,10 +102,7 @@ public:
 	{
 		std::string multi = std::to_string(_num1 * _num2);
 		return multi;
-	}
-
-
-
+	}*/
 
 };
 CalProcessor* CalProcessor :: _processor = nullptr;

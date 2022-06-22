@@ -143,11 +143,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddCommand.h" />
     <ClInclude Include="CalculatorApp.h" />
     <ClInclude Include="CalFactory.h" />
     <ClInclude Include="CalProcessor.h" />
+    <ClInclude Include="DivideCommand.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="MainCalculator.h" />
+    <ClInclude Include="MultiCommand.h" />
+    <ClInclude Include="SubtractCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApp.cpp" />

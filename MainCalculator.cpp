@@ -2,6 +2,11 @@
 #include "CalFactory.h"
 #include "CalculatorApp.h"
 #include "CalProcessor.h"
+#include "AddCommand.h"
+#include "DivideCommand.h"
+#include "MultiCommand.h"
+#include "SubtractCommand.h"
+#include <vector>
 
 wxBEGIN_EVENT_TABLE(MainCalculator, wxFrame)
 EVT_BUTTON(0, OnButtonClicked)
@@ -11,10 +16,6 @@ wxEND_EVENT_TABLE()
 MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(400, 400), wxSize(417, 490))
 {
 	CalFactory maker = CalFactory(this);
-
-	/*CalFactory factory = CalFactory(this);
-	m_btn = factory.createbuttons(this, wxID_ANY, "Calculator", wxPoint(400, 400), wxSize(417, 490));*/
-
 	m_txt = new wxTextCtrl(this, 21, " ", wxPoint(0, 0), wxSize(400, 150));
 	//buttons 0 through 20
 	maker.m_btn0();
@@ -38,7 +39,6 @@ MainCalculator::MainCalculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPo
 	maker.m_btn18();
 	maker.m_btn19();
 	maker.m_btn20();
-
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &MainCalculator::OnButtonClicked, this);
 }
 
@@ -51,8 +51,11 @@ wxString _num1 = "";
 wxString _num2 = "";
 bool symbol = false;
 wxString sym = "";
+bool convert = true;
 void MainCalculator::OnButtonClicked(wxCommandEvent& evt)
 {
+	std::vector<ICommand*> Commander;
+
 	CalProcessor* proc = CalProcessor::GetInstance();
 	wxString stringNum = "";
 	if (evt.GetId() >= 0 && evt.GetId() < 10)
@@ -90,7 +93,12 @@ if (evt.GetId() == 11)
 if (evt.GetId() == 12)
 {
 	proc->SetBaseNum(wxAtoi(m_txt->GetValue()));
+
+	if (convert == true) {
+		proc->SetBaseNum(wxAtoi(m_txt->GetValue()));
+	}
 	m_txt->Clear();
+
 	m_txt->AppendText(proc->GetDecimal());
 }
 if (evt.GetId() == 13)
@@ -100,43 +108,70 @@ if (evt.GetId() == 13)
 	sym = "+";
 	symbol = true;
 }
-/*if (evt.GetId() == 14)
-{
-	_num1 = m_txt->GetValue();
-	m_txt->AppendText("=");
-	sym = "=";
-	symbol = true;
-}*/
 if (evt.GetId() == 14)
 {
 	symbol = false;
 	if (sym == "+")
 	{
+		AddCommand* Add = new AddCommand();
+
 		num1 = wxAtoi(_num1);
 		num2 = wxAtoi(_num2);
+
+		Add->setNum1(num1);
+		Add->setNum2(num2);
+
+		Commander.push_back(Add);
 		m_txt->Clear();
-		m_txt->AppendText(proc->DoAddition(num1, num2));
+
+		m_txt->AppendText(Commander[0]->Execute());
+
+		delete Add;
 	}
 	else if (sym == "-")
 	{
+
+		SubtractCommand* sub = new SubtractCommand();
+
 		num1 = wxAtoi(_num1);
 		num2 = wxAtoi(_num2);
+
+		Commander.push_back(sub);
+
 		m_txt->Clear();
-		m_txt->AppendText(proc->DoSubtraction(num1, num2));
+
+		m_txt->AppendText(Commander[0]->Execute());
+
+		delete sub;
 	}
 	else if (sym == "/")
 	{
+		DivideCommand* Divide = new DivideCommand();
+
 		num1 = wxAtoi(_num1);
 		num2 = wxAtoi(_num2);
+		Commander.push_back(Divide);
+
 		m_txt->Clear();
-		m_txt->AppendText(proc->DoDivison(num1, num2));
+
+		m_txt->AppendText(Commander[0]->Execute());
+
+		delete Divide;
 	}
 	else if (sym == "*")
 	{
+		MultiCommand* Multi = new MultiCommand();
+
 		num1 = wxAtoi(_num1);
 		num2 = wxAtoi(_num2);
+
+		Commander.push_back(Multi);
+
 		m_txt->Clear();
-		m_txt->AppendText(proc->DoMultiply(num1, num2));
+
+		m_txt->AppendText(Commander[0]->Execute());
+
+		delete Multi;
 	}
 	_num2.Clear();
 	_num1.Clear();
@@ -146,16 +181,23 @@ if (evt.GetId() == 14)
 if (evt.GetId() == 15)
 {
 	m_txt->Clear();
+	convert = false;
 }
 if (evt.GetId() == 16)
 {
 	proc->SetBaseNum(wxAtoi(m_txt->GetValue()));
+	if (convert == true) {
+		proc->SetBaseNum(wxAtoi(m_txt->GetValue()));
+	}
 	m_txt->Clear();
 	m_txt->AppendText(proc->GetBinary());
 }
 if (evt.GetId() == 17)
 {
 	proc->SetBaseNum(wxAtoi(m_txt->GetValue()));
+	if (convert == true) {
+		proc->SetBaseNum(wxAtoi(m_txt->GetValue()));
+	}
 	m_txt->Clear();
 	m_txt->AppendText(proc->GetHexadecimal());
 }
