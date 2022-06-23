@@ -7,10 +7,10 @@ public:
 	MainCalculator* m_form1 = nullptr;
 	wxButton* m_btn = nullptr;
 
-	//wxButton* createbuttons(wxWindow* window, int ID, wxString letter, wxPoint point, wxSize size);
+	wxButton* Createbuttons(wxWindow* window, int ID, wxString letter, wxPoint point, wxSize size);
 	CalFactory(MainCalculator* m_form1);
 	~CalFactory();
-	wxButton* m_btn0();
+	/*wxButton* m_btn0();
 	wxButton* m_btn1();
 	wxButton* m_btn2();
 	wxButton* m_btn3();
@@ -30,6 +30,6 @@ public:
 	wxButton* m_btn17();
 	wxButton* m_btn18();
 	wxButton* m_btn19();
-	wxButton* m_btn20();
+	wxButton* m_btn20();*/
 };
 

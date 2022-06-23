@@ -83,26 +83,6 @@ public:
 		NumsToAlpha = "0x" + NumsToAlpha;
 		return NumsToAlpha;
 	}
-	/*std::string DoAddition(int _num1, int _num2)
-	{
-		std::string add = std::to_string(_num1 + _num2);
-		return add;
-	}
-	std::string DoSubtraction(int _num1, int _num2)
-	{
-		std::string sub = std::to_string(_num1 - _num2);
-		return sub;
-	}
-	std::string DoDivison(int _num1, int _num2)
-	{
-		std::string div = std::to_string(_num1 / _num2);
-		return div;
-	}
-	std::string DoMultiply(int _num1, int _num2)
-	{
-		std::string multi = std::to_string(_num1 * _num2);
-		return multi;
-	}*/
 
 };
 CalProcessor* CalProcessor :: _processor = nullptr;

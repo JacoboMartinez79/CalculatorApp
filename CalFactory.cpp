@@ -1,11 +1,10 @@
 #include "CalFactory.h"
 
 
-
-/*wxButton* createbuttons(wxWindow* window, int ID, wxString letter, wxPoint point, wxSize size)
+wxButton* CalFactory::Createbuttons(wxWindow* window, int ID, wxString letter, wxPoint point, wxSize size)
 {
 	return new wxButton(window, ID, letter, point, size);
-}*/
+}
 
 CalFactory::CalFactory(MainCalculator* m_form1) {
 	this->m_form1 = m_form1;
@@ -14,7 +13,7 @@ CalFactory::~CalFactory() {
 
 	
 }
-
+/*
 wxButton* CalFactory::m_btn0() 
 {
 	m_btn = new wxButton(m_form1, 0, "0", wxPoint(0, 400), wxSize(300, 50));
@@ -126,4 +125,4 @@ wxButton* CalFactory::m_btn20()
 	m_btn = new wxButton(m_form1, 20, "Mod", wxPoint(0, 150), wxSize(100, 50));
 
 	return m_btn;
-}
+}*/
